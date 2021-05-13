@@ -30,15 +30,9 @@ RUN \
     /tmp/changedetection.tar.gz -C \
     /app/changedetection/ --strip-components=1 && \
   rm /tmp/changedetection.tar.gz && \
-  mkdir -p /tmp/wheels && \
-  curl -s -o \
-    /tmp/wheels.tar.gz -L \
-    "https://github.com/TheSpad/docker-changedetection.io/raw/main/wheels/wheels.tar.gz" && \
-  tar xf \
-    /tmp/wheels.tar.gz -C \
-    /tmp/wheels/ && \
-  pip install wheel && \
-  pip install -U --no-cache-dir --find-links=/tmp/wheels -r /app/changedetection/requirements.txt && \
+  pip install -U --no-cache-dir \
+    wheel && \
+  pip install -U --no-cache-dir --find-links https://wheel-index.linuxserver.io/alpine-3.13/ -r /app/changedetection/requirements.txt && \
   apk del --purge \
     build-dependencies && \
   rm -rf \
