@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.13
+FROM ghcr.io/linuxserver/baseimage-alpine:3.14
 LABEL maintainer="Adam Beardwood"
 ENV PYTHONUNBUFFERED=1
 
@@ -30,6 +30,7 @@ RUN \
     /tmp/changedetection.tar.gz -C \
     /app/changedetection/ --strip-components=1 && \
   rm /tmp/changedetection.tar.gz && \
+  pip install -U --no-cache-dir wheel && \
   pip install -U --no-cache-dir --find-links https://wheel-index.linuxserver.io/alpine/ -r /app/changedetection/requirements.txt && \
   apk del --purge \
     build-dependencies && \
