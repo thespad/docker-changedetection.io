@@ -30,7 +30,7 @@ jobs:
             ${{ env.DOCKERHUB_SLUG }}
             ${{ env.GHCR_SLUG }}
           tags: |
-            type=semver,pattern={{version}}
+            type=semver,pattern={{raw}}
             type=ref,event=pr              
           labels: |
             org.opencontainers.image.title=changedetection.io
