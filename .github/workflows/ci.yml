@@ -53,6 +53,8 @@ jobs:
           IMAGE_RELEASE=$(echo ${image_info} | jq -r '.Labels."org.opencontainers.image.version"')
           IMAGE_VERSION=$(echo ${IMAGE_RELEASE} | awk -F'-spad' '{print $1}' | cut -d 'v' -f 2)
 
+          echo ::set-output name=image_version::false
+
           if [ -z "${IMAGE_VERSION}" ]; then
             echo "**** Can't retrieve last pushed version, exiting ****"
             exit 1
@@ -70,6 +72,6 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: ${{ secrets.REPO_SCOPED_TOKEN }}
-          automatic_release_tag: v${{ steps.build_check.outputs.IMAGE_VERSION }}-spad001
+          automatic_release_tag: v${{ steps.build_check.outputs.image_version }}-spad001
           prerelease: false
-          title: v${{ steps.build_check.outputs.IMAGE_VERSION }}-spad001
+          title: v${{ steps.build_check.outputs.image_version }}-spad001
