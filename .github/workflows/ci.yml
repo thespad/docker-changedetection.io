@@ -16,7 +16,7 @@ jobs:
         name: Check if we should rebuild
         id: build_check
         run: |
-          if [[ "${{github.event_name}}" != "schedule" && "${{github.event_name}}" != "workflow_dispatch"]]; then
+          if [ "${{github.event_name}}" != "schedule" ] && [ "${{github.event_name}}" != "workflow_dispatch" ]; then
             echo "**** event was not cron, rebuilding ****"
             exit 0
           fi
