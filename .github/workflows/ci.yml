@@ -56,10 +56,6 @@ jobs:
           IMAGE_RELEASE=$(echo ${image_info} | jq -r '.Labels."org.opencontainers.image.version"')
           IMAGE_VERSION=$(echo ${IMAGE_RELEASE} | awk -F'-spad' '{print $1}' | cut -d 'v' -f 2)
 
-          IMAGE_RELEASE=${EXT_RELEASE}
-
-          echo ::set-output name=image_release::${IMAGE_RELEASE}
-
           if [ -z "${IMAGE_VERSION}" ]; then
             echo "**** Can't retrieve last pushed version, exiting ****"
             exit 1
@@ -74,6 +70,9 @@ jobs:
           fi
 
           echo ::set-output name=update_available::true
+          IMAGE_RELEASE=${EXT_RELEASE}
+          echo ::set-output name=image_release::${IMAGE_RELEASE}
+
 
   release:
     runs-on: ubuntu-latest
