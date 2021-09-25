@@ -75,10 +75,11 @@ jobs:
     if:  ${{ needs.check.outputs.update_available == 'true' }}
     steps:  
       - 
-        name: Do Release
-        uses: marvinpinto/action-automatic-releases@latest
+        name: Checkout
+        uses: actions/checkout@v2
+      - name: Do release
+        uses: softprops/action-gh-release@v1
         with:
-          repo_token: ${{ secrets.REPO_SCOPED_TOKEN }}
-          automatic_release_tag: v${{ needs.check.outputs.image_release }}-spad001
-          prerelease: false
-          title: v${{ needs.check.outputs.image_release }}-spad001
+          body: "* Updated changedetection.io to v${{ needs.check.outputs.image_release }}"
+          token: ${{ secrets.REPO_SCOPED_TOKEN }}
+          tag_name: v${{ needs.check.outputs.image_release }}-spad001
