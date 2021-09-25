@@ -70,6 +70,6 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: ${{ secrets.REPO_SCOPED_TOKEN }}
-          automatic_release_tag: v${{ IMAGE_VERSION }}-spad001
+          automatic_release_tag: v${{ steps.build_check.outputs.IMAGE_VERSION }}-spad001
           prerelease: false
-          title: v${{ IMAGE_VERSION }}-spad001
+          title: v${{ steps.build_check.outputs.IMAGE_VERSION }}-spad001
