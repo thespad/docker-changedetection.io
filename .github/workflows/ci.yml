@@ -16,7 +16,7 @@ jobs:
         name: Check if we should rebuild
         id: build_check
         run: |
-          if [ "${{github.event_name}}" != "schedule" ] && ["${{github.event_name}}" != "workflow_dispatch"]; then
+          if [[ "${{github.event_name}}" != "schedule" && "${{github.event_name}}" != "workflow_dispatch"]]; then
             echo "**** event was not cron, rebuilding ****"
             exit 0
           fi
@@ -56,7 +56,7 @@ jobs:
           IMAGE_RELEASE=$(echo ${image_info} | jq -r '.Labels."org.opencontainers.image.version"')
           IMAGE_VERSION=$(echo ${IMAGE_RELEASE} | awk -F'-spad' '{print $1}' | cut -d 'v' -f 2)
 
-          IMAGE_RELEASE=v${EXT_RELEASE}-spad001
+          IMAGE_RELEASE={EXT_RELEASE}
 
           echo ::set-output name=image_release::${IMAGE_RELEASE}
 
