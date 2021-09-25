@@ -8,6 +8,8 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    env:
+      APP_NAME: changedetection.io
     outputs:
       image_release: ${{ steps.build_check.outputs.image_release }}
       update_available: ${{ steps.build_check.outputs.update_available }}
@@ -28,10 +30,10 @@ jobs:
           echo "**** External version: ${EXT_RELEASE} ****"
           echo "**** Retrieving last pushed version ****"
 
-          image="thespad/changedetection.io"
+          image="thespad/${{ env.APP_NAME }}"
           tag="latest"
           token=$(curl -sX GET \
-            "https://ghcr.io/token?scope=repository%3Athespad%2Fchangedetection.io%3Apull" \
+            "https://ghcr.io/token?scope=repository%3Athespad%2F${{ env.APP_NAME }}%3Apull" \
             | jq -r '.token')
           multidigest=$(curl -s \
             --header "Accept: application/vnd.docker.distribution.manifest.v2+json" \
@@ -71,6 +73,8 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
+    env:
+      APP_NAME: changedetection.io    
     needs: check
     if:  ${{ needs.check.outputs.update_available == 'true' }}
     steps:  
@@ -80,6 +84,6 @@ jobs:
       - name: Do release
         uses: softprops/action-gh-release@v1
         with:
-          body: "* Updated changedetection.io to v${{ needs.check.outputs.image_release }}"
+          body: "* Updated ${{ env.APP_NAME }} to v${{ needs.check.outputs.image_release }}"
           token: ${{ secrets.REPO_SCOPED_TOKEN }}
           tag_name: v${{ needs.check.outputs.image_release }}-spad001
