@@ -1,4 +1,4 @@
-name: Get latest release version
+name: Get latest baseimage version
 on:
   schedule:
     - cron:  '0 0 * * 0'

@@ -28,7 +28,6 @@ jobs:
           EXT_RELEASE=$(echo ${EXT_RELEASE} | sed 's/[~,%@+;:/]//g')
 
           echo "**** External version: ${EXT_RELEASE} ****"
-
           echo "**** Retrieving last pushed version ****"
 
           image="thespad/changedetection.io"
@@ -66,8 +65,6 @@ jobs:
             echo ::set-output name=update_available::false
             exit 0
           fi
-
-          echo ::set-output name=update_available::true
 
       - name: Do Release          
         uses: marvinpinto/action-automatic-releases@latest
