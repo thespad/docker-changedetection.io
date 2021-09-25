@@ -13,14 +13,9 @@ jobs:
       update_available: ${{ steps.build_check.outputs.update_available }}
     steps:    
       - 
-        name: Check if we should rebuild
+        name: Check if we should release
         id: build_check
         run: |
-          if [ "${{github.event_name}}" != "schedule" ] && [ "${{github.event_name}}" != "workflow_dispatch" ]; then
-            echo "**** event was not cron, rebuilding ****"
-            exit 0
-          fi
-
           echo "**** Retrieving external version ****"
           EXT_RELEASE=$(curl -sX GET "https://api.github.com/repos/dgtlmoon/changedetection.io/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]');
           if [ -z "${EXT_RELEASE}" ] || [ "${EXT_RELEASE}" == "null" ]; then
@@ -64,15 +59,15 @@ jobs:
           echo "**** Last pushed version: ${IMAGE_VERSION} ****"
 
           if [ "${EXT_RELEASE}" == "${IMAGE_VERSION}" ]; then
-            echo "**** Version ${EXT_RELEASE} already pushed, not rebuilding ****"
+            echo "**** Version ${EXT_RELEASE} already pushed, not releasing ****"
             echo ::set-output name=update_available::false
             exit 0
           fi
 
+          echo "**** Version ${EXT_RELEASE} has not been pushed, releasing ****"
           echo ::set-output name=update_available::true
           IMAGE_RELEASE=${EXT_RELEASE}
           echo ::set-output name=image_release::${IMAGE_RELEASE}
-
 
   release:
     runs-on: ubuntu-latest
