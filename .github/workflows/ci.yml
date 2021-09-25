@@ -73,8 +73,6 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    env:
-      APP_NAME: changedetection.io    
     needs: check
     if:  ${{ needs.check.outputs.update_available == 'true' }}
     steps:  
@@ -84,6 +82,6 @@ jobs:
       - name: Do release
         uses: softprops/action-gh-release@v1
         with:
-          body: "* Updated ${{ env.APP_NAME }} to v${{ needs.check.outputs.image_release }}"
+          body: "* Updated ${{ needs.check.env.APP_NAME }} to v${{ needs.check.outputs.image_release }}"
           token: ${{ secrets.REPO_SCOPED_TOKEN }}
           tag_name: v${{ needs.check.outputs.image_release }}-spad001
