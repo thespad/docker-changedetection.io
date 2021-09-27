@@ -72,7 +72,7 @@ jobs:
           IMAGE_RELEASE=${EXT_RELEASE}
           echo ::set-output name=image_release::${IMAGE_RELEASE}
 
-          echo ::set-output name=image_release::${APP_NAME}
+          echo ::set-output name=app_name::${APP_NAME}
 
   release:
     runs-on: ubuntu-latest
