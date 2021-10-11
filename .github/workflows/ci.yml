@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_NAME: changedetection.io
-      RELEASE_CHECK: $(curl -sX GET 'https://api.github.com/repos/dgtlmoon/changedetection.io/releases/latest' | awk '/tag_name/{print $4;exit}' FS='[""]');
+      RELEASE_CHECK: $(curl -sX GET "'https://api.github.com/repos/dgtlmoon/changedetection.io/releases/latest'" | awk '/tag_name/{print $4;exit}' FS='[""]');
     outputs:
       image_release: ${{ steps.build_check.outputs.image_release }}
       update_available: ${{ steps.build_check.outputs.update_available }}
