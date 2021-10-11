@@ -21,7 +21,7 @@ jobs:
         id: build_check
         run: |
           echo "**** Retrieving external version ****"
-          EXT_RELEASE='${{ RELEASE_CHECK }}'
+          EXT_RELEASE='${RELEASE_CHECK}'
           if [ -z "${EXT_RELEASE}" ] || [ "${EXT_RELEASE}" == "null" ]; then
             echo "**** Can't retrieve external version, exiting ****"
             exit 1
