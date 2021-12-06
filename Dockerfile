@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.14
+FROM ghcr.io/linuxserver/baseimage-alpine:3.15
 LABEL maintainer="Adam Beardwood"
 ENV PYTHONUNBUFFERED=1
 
