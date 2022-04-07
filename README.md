@@ -7,9 +7,9 @@
 [![GitHub Stars](https://img.shields.io/github/stars/thespad/docker-changedetection.io.svg?color=26689A&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/thespad/docker-changedetection.io)
 [![Docker Stars](https://img.shields.io/docker/stars/thespad/changedetection.io.svg?color=26689A&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/thespad/changedetection.io)
 
-[![ci](https://img.shields.io/github/workflow/status/thespad/docker-changedetection.io/Check%20for%20update%20and%20release.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Upstream%20Updates)](https://github.com/thespad/docker-changedetection.io/actions/workflows/called-ci.yml)
-[![ci](https://img.shields.io/github/workflow/status/thespad/docker-changedetection.io/Check%20for%20base%20image%20updates.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Baseimage%20Updates)](https://github.com/thespad/docker-changedetection.io/actions/workflows/called-baseimage-update.yml)
-[![ci](https://img.shields.io/github/workflow/status/thespad/docker-changedetection.io/Build%20Image%20On%20Release.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Build%20Image)](https://github.com/thespad/docker-changedetection.io/actions/workflows/called-bakebuild.yml)
+[![ci](https://img.shields.io/github/workflow/status/thespad/docker-changedetection.io/Check%20for%20update%20and%20release.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Upstream%20Updates)](https://github.com/thespad/docker-changedetection.io/actions/workflows/call-check-and-release.yml)
+[![ci](https://img.shields.io/github/workflow/status/thespad/docker-changedetection.io/Check%20for%20base%20image%20updates.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Baseimage%20Updates)](https://github.com/thespad/docker-changedetection.io/actions/workflows/call-baseimage-update.yml)
+[![ci](https://img.shields.io/github/workflow/status/thespad/docker-changedetection.io/Build%20Image%20On%20Release.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Build%20Image)](https://github.com/thespad/docker-changedetection.io/actions/workflows/call-build-image.yml)
 
 [changedetection.io](https://github.com/dgtlmoon/changedetection.io) is a tool for self-hosted change monitoring of web pages
 
