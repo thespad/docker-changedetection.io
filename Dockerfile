@@ -31,7 +31,8 @@ RUN \
     /tmp/changedetection.tar.gz -C \
     /app/changedetection/ --strip-components=1 && \
   rm /tmp/changedetection.tar.gz && \
-  pip install -U --no-cache-dir --find-links https://wheel-index.linuxserver.io/alpine/ -r /app/changedetection/requirements.txt && \
+  pip3 install -U pip wheel setuptools && \
+  pip3 install -U --no-cache-dir --find-links https://wheel-index.linuxserver.io/alpine-3.15/ -r /app/changedetection/requirements.txt && \
   apk del --purge \
     build-dependencies && \
   rm -rf \
