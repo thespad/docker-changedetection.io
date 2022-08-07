@@ -11,6 +11,10 @@
 [![ci](https://img.shields.io/github/workflow/status/thespad/docker-changedetection.io/Check%20for%20base%20image%20updates.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Check%20For%20Baseimage%20Updates)](https://github.com/thespad/docker-changedetection.io/actions/workflows/call-baseimage-update.yml)
 [![ci](https://img.shields.io/github/workflow/status/thespad/docker-changedetection.io/Build%20Image%20On%20Release.svg?labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github&label=Build%20Image)](https://github.com/thespad/docker-changedetection.io/actions/workflows/call-build-image.yml)
 
+## DEPRECATION NOTICE
+
+This image is deprecated. We will not offer support for this image and it will not be updated. We recommend switching to [https://github.com/linuxserver/docker-changedetection.io](https://github.com/linuxserver/docker-changedetection.io) instead.
+
 [changedetection.io](https://github.com/dgtlmoon/changedetection.io) is a tool for self-hosted change monitoring of web pages
 
 ## Supported Architectures
